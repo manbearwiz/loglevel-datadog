@@ -1,1 +1,1 @@
-export { DatadogBrowserLogs } from './datadog-browser-logs';
+export { loglevelDatadog } from './loglevel-datadog';
