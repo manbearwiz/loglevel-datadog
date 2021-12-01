@@ -1,4 +1,4 @@
-import log, { LogLevelNumbers } from 'loglevel';
+import { LogLevelNumbers, RootLogger } from 'loglevel';
 import {
   datadogLogs,
   LogsInitConfiguration,
@@ -15,27 +15,30 @@ const STATUS_TYPE: Record<LogLevelNumbers, StatusType> = {
 };
 
 export function loglevelDatadog(
+  logger: RootLogger,
   datadogConfiguration: LogsInitConfiguration,
   statusTypesMap = STATUS_TYPE,
 ) {
   datadogLogs.init(datadogConfiguration);
 
-  const originalFactory = log.methodFactory;
-  log.methodFactory = (
+  const { methodFactory } = logger;
+  logger.methodFactory = (
     methodName: string,
     level: LogLevelNumbers,
     loggerName: string | symbol,
   ) => {
-    const rawMethod = originalFactory(methodName, level, loggerName);
+    const rawMethod = methodFactory(methodName, level, loggerName);
 
     return (...messages: unknown[]) => {
-      messages
-        .filter(Boolean)
+      const message = messages
         .map((m) => (typeof m === 'string' ? m : JSON.stringify(m)))
-        .forEach((m) => datadogLogs.logger.log(m, {}, statusTypesMap[level]));
+        .join(' ');
 
-      rawMethod(messages);
+      datadogLogs.logger.log(message, {}, statusTypesMap[level]);
+
+      // TODO: Remove this line from traces
+      rawMethod(...messages);
     };
   };
-  log.setLevel(log.getLevel());
+  logger.setLevel(logger.getLevel());
 }
