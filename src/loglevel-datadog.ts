@@ -8,9 +8,9 @@ import {
 const STATUS_TYPE: Record<LogLevelNumbers, StatusType> = {
   0: 'debug',
   1: 'debug',
-  2: 'error',
-  3: 'info',
-  4: 'warn',
+  2: 'info',
+  3: 'warn',
+  4: 'error',
   5: 'debug',
 };
 
