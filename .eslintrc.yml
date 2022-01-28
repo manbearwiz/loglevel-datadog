@@ -6,12 +6,25 @@ extends:
   - plugin:@typescript-eslint/recommended
   - plugin:@typescript-eslint/recommended-requiring-type-checking
   - plugin:prettier/recommended
+  - plugin:import/recommended
+  - plugin:import/typescript
 parser: '@typescript-eslint/parser'
 parserOptions:
-  project: ["tsconfig.json"]
+  project: ['tsconfig.json']
   createDefaultProgram: true
   ecmaVersion: 12
   sourceType: module
 plugins:
   - '@typescript-eslint'
-rules: {}
+rules:
+  import/order:
+    - error
+    - newlines-between: always
+      alphabetize:
+        order: asc
+        caseInsensitive: true
+settings:
+  import/resolver:
+    typescript:
+      alwaysTryTypes: true
+      project: tsconfig.json
