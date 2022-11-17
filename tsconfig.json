@@ -3,10 +3,7 @@
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "outDir": "./dist",
-    "module": "esnext",
-    "moduleResolution": "node"
+    "outDir": "./dist"
   },
-  "exclude": ["node_modules", "dist"],
-  "types": ["node"]
+  "exclude": ["node_modules", "dist"]
 }
