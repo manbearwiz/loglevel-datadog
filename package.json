@@ -44,7 +44,7 @@
     "loglevel": "^1.8.0"
   },
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.1",
+    "@tsconfig/node16-strictest": "^1.0.4",
     "@types/node": "^16.7.13",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
