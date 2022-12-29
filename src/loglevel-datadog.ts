@@ -3,7 +3,7 @@ import {
   LogsInitConfiguration,
   StatusType,
 } from '@datadog/browser-logs';
-import type { LogLevelNumbers, RootLogger } from 'loglevel';
+import type { LogLevelNames, LogLevelNumbers, RootLogger } from 'loglevel';
 
 const STATUS_TYPE: Record<LogLevelNumbers, StatusType> = {
   0: 'debug',
@@ -23,7 +23,7 @@ export function loglevelDatadog(
 
   const { methodFactory } = logger;
   logger.methodFactory = (
-    methodName: string,
+    methodName: LogLevelNames,
     level: LogLevelNumbers,
     loggerName: string | symbol,
   ) => {
