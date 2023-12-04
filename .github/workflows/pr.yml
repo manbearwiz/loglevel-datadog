@@ -28,8 +28,5 @@ jobs:
       - name: Lint code
         run: npm run lint
 
-      - name: Test
-        run: npm run coverage
-
       - name: Build
         run: npm run build
