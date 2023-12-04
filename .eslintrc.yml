@@ -3,16 +3,15 @@ env:
   es2021: true
 extends:
   - eslint:recommended
-  - plugin:@typescript-eslint/recommended
-  - plugin:@typescript-eslint/recommended-requiring-type-checking
+  - plugin:@typescript-eslint/strict-type-checked
+  - plugin:@typescript-eslint/stylistic-type-checked
   - plugin:prettier/recommended
   - plugin:import/recommended
   - plugin:import/typescript
 parser: '@typescript-eslint/parser'
 parserOptions:
-  project: ['tsconfig.json']
-  createDefaultProgram: true
-  ecmaVersion: 12
+  project: true
+  ecmaVersion: latest
   sourceType: module
 plugins:
   - '@typescript-eslint'
@@ -28,3 +27,7 @@ settings:
     typescript:
       alwaysTryTypes: true
       project: tsconfig.json
+overrides:
+  - files: '*.{config,spec,test}.ts'
+    extends:
+      - plugin:@typescript-eslint/disable-type-checked
