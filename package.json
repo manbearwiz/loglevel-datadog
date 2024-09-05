@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/manbearwiz/loglevel-datadog#readme",
   "dependencies": {
-    "@datadog/browser-logs": "^4.2.0",
+    "@datadog/browser-logs": "^5.26.0",
     "loglevel": "^1.8.0"
   },
   "devDependencies": {
