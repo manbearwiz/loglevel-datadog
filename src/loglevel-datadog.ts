@@ -1,7 +1,7 @@
 import {
+  type LogsInitConfiguration,
+  type StatusType,
   datadogLogs,
-  LogsInitConfiguration,
-  StatusType,
 } from '@datadog/browser-logs';
 import type { LogLevelNames, LogLevelNumbers, RootLogger } from 'loglevel';
 
